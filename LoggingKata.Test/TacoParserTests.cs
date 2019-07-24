@@ -13,14 +13,21 @@ namespace LoggingKata.Test
 
         [Theory]
         [InlineData("Example")]
-        [InlineData(33.524131, -86.724876, Taco Bell Birmingham / ... (Free trial * Add to Cart for a full POI info))]
-        [InlineData(30.445296, -87.240548, Taco Bell Pensacola / ... (Free trial * Add to Cart for a full POI info))]
-        [InlineData(33.889469, -84.057706, Taco Bell Lawrenceville / ... (Free trial * Add to Cart for a full POI info))]
-        [InlineData(32.364153, -86.269979, Taco Bell Montgomery / ... (Free trial * Add to Cart for a full POI info))]
+        [InlineData("34.039588, -84.283254, Taco Bell Alpharetta / ... (Free trial * Add to Cart for a full POI info)")]
+        [InlineData("34.018008,-86.079099,Taco Bell Attall... (Free trial * Add to Cart for a full POI info)")]
+        [InlineData("30.906033, -87.79328, Taco Bell Bay Minett... (Free trial * Add to Cart for a full POI info)")]
+        [InlineData("33.470013,-86.816966,Taco Bell Birmingham/... (Free trial * Add to Cart for a full POI info)")]
 
         public void ShouldParse(string str)
         {
-            // TODO: Complete Should Parse
+            // Arrange
+            TacoParser Location = new TacoParser();
+
+            // Act
+            ITrackable actual = Location.Parse(str);
+
+            // Assert
+            Assert.NotNull(actual);
         }
 
         [Theory]
@@ -30,22 +37,13 @@ namespace LoggingKata.Test
         public void ShouldFailParse(string str)
         {
             // Arrange
-            ITrackable Parse = new ITrackable Parse();
+            TacoParser Location = new TacoParser();
 
             // Act
-            string actual = Parse.ITrackable ParseGet(str);
+            ITrackable actual = Location.Parse(str);
 
             // Assert
-            Assert.Equal(expected, actual);
+            Assert.Null(actual);
         }
     }
 }
-
-// Arrange
-Calculator Calc = new Calculator();
-
-// Act
-int actual = Calc.GetFactorial(number);
-
-// Assert
-Assert.Equal(expected, actual);

@@ -1,4 +1,6 @@
-﻿namespace LoggingKata
+﻿using System;
+
+namespace LoggingKata
 {
     /// <summary>
     /// Parses a POI file to locate all the Taco Bells
@@ -10,9 +12,17 @@
         public ITrackable Parse(string line)
         {
             logger.LogInfo("Begin parsing");
-
+            var cells = line.Split(',');
+            if (cells.Length < 3)
+            {
+            return null; // TODO Implement  
             // Do not fail if one record parsing fails, return null
-            return null; // TODO Implement
+            }
+            else if()
+            double latitude, longitude;
+            double.TryParse(cells[0], out latitude);
+            double.TryParse(cells[1], out longitude);
+            string name = cells[2];
         }
     }
 }
