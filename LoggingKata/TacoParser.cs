@@ -20,9 +20,6 @@ namespace LoggingKata
             {
                 return null;
             }
-
-            
-            
             Location.Latitude = double.Parse(cells[0]);
             Location.Longitude = double.Parse(cells[1]);
             string name = cells[2];

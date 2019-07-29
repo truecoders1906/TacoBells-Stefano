@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace LoggingKata
+﻿namespace LoggingKata
 {
     public class TacoBell : ITrackable
 
