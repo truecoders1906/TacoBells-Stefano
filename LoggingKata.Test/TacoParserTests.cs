@@ -12,7 +12,6 @@ namespace LoggingKata.Test
         }
 
         [Theory]
-        [InlineData("Example")]
         [InlineData("34.039588, -84.283254, Taco Bell Alpharetta / ... (Free trial * Add to Cart for a full POI info)")]
         [InlineData("34.018008,-86.079099,Taco Bell Attall... (Free trial * Add to Cart for a full POI info)")]
         [InlineData("30.906033, -87.79328, Taco Bell Bay Minett... (Free trial * Add to Cart for a full POI info)")]
@@ -21,10 +20,10 @@ namespace LoggingKata.Test
         public void ShouldParse(string str)
         {
             // Arrange
-            TacoParser Location = new TacoParser();
+            TacoParser location = new TacoParser();
 
             // Act
-            ITrackable actual = Location.Parse(str);
+            ITrackable actual = location.Parse(str);
 
             // Assert
             Assert.NotNull(actual);

@@ -11,18 +11,26 @@ namespace LoggingKata
         
         public ITrackable Parse(string line)
         {
-            logger.LogInfo("Begin parsing");
+            //logger.LogInfo("Begin parsing");
+            TacoBell trackableTacoBell = new TacoBell();
+            Point Location = new Point();
             var cells = line.Split(',');
+
             if (cells.Length < 3)
             {
-            return null; // TODO Implement  
-            // Do not fail if one record parsing fails, return null
+                return null;
             }
-            else if()
-            double latitude, longitude;
-            double.TryParse(cells[0], out latitude);
-            double.TryParse(cells[1], out longitude);
+
+            
+            
+            Location.Latitude = double.Parse(cells[0]);
+            Location.Longitude = double.Parse(cells[1]);
             string name = cells[2];
+
+            trackableTacoBell.Name = name;
+            trackableTacoBell.Location = Location;
+            
+            return trackableTacoBell;
         }
     }
 }
