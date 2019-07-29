@@ -5,28 +5,25 @@ using GeoCoordinatePortable;
 
 namespace LoggingKata
 {
-    class Program : ILog
+    class Program
     {
         static readonly ILog logger = new TacoLogger();
         const string csvPath = "TacoBell-US-AL.csv";
 
         static void Main(string[] args)
         {
-            logger.LogInfo("Log initialized");
-
             var lines = File.ReadAllLines(csvPath);
-
-            //logger.LogInfo($"Lines: {lines[0]}");
-
             var parser = new TacoParser();
-
             var locations = lines.Select(parser.Parse).ToArray();
+
+            logger.LogInfo("LogInfo");
 
             ITrackable TacoBell1 = null;
             ITrackable TacoBell2 = null;
             double distance = 0;
             for (int i = 0; i < locations.Length; i++)
             {
+                logger.LogInfo($"Lines: {lines[i]}");
                 for (int k = 0; k < i + 1; k++)
                 {
                     ITrackable LocationA = locations[i];
@@ -45,34 +42,6 @@ namespace LoggingKata
             }
             Console.WriteLine(TacoBell1.Name);
             Console.WriteLine(TacoBell2.Name);
-
-            // TODO:  Find the two Taco Bells in Alabama that are the furthest from one another.
-            // HINT:  You'll need two nested forloops
-        }
-
-        public void LogFatal(string log, Exception exception = null)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void LogError(string log, Exception exception = null)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void LogWarning(string log)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void LogInfo(string log)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void LogDebug(string log)
-        {
-            throw new NotImplementedException();
         }
     }
 }

@@ -6,4 +6,3 @@
         public double Longitude { get; set; }
     }
 }
-//From Tacobell

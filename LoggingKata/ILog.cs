@@ -10,4 +10,3 @@ namespace LoggingKata
         void LogDebug(string log);
     }
 }
-//From TacoParser to ILog
