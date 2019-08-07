@@ -17,12 +17,18 @@
 
             if (cells.Length < 3 || line == null)
             {
-                logger.LogInfo("LogError");
+                logger.LogError("Missing information" + line);
                 return null;
             }
 
-            Location.Latitude = double.Parse(cells[0]);
-            Location.Longitude = double.Parse(cells[1]);
+            bool latitudeParseSuccess = double.TryParse(cells[0], out double latitude);
+            bool longitudeParseSuccess = double.TryParse(cells[1], out double longitude);
+
+            if (latitudeParseSuccess == false || longitudeParseSuccess == false)
+                return null;
+
+            Location.Latitude = latitude;
+            Location.Longitude = longitude;
             string name = cells[2];
             trackableTacoBell.Name = name;
             trackableTacoBell.Location = Location;

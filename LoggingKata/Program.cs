@@ -24,10 +24,11 @@ namespace LoggingKata
             for (int i = 0; i < locations.Length; i++)
             {
                 logger.LogInfo($"Lines: {lines[i]}");
+                ITrackable LocationA = locations[i];
+                var corA = new GeoCoordinate(LocationA.Location.Latitude, LocationA.Location.Longitude);
+
                 for (int k = 0; k < i + 1; k++)
                 {
-                    ITrackable LocationA = locations[i];
-                    var corA = new GeoCoordinate(LocationA.Location.Latitude, LocationA.Location.Longitude);
                     ITrackable LocationB = locations[k];
                     var corB = new GeoCoordinate(LocationB.Location.Latitude, LocationB.Location.Longitude);
                     double distanceTest = corA.GetDistanceTo(corB);
